@@ -8,25 +8,27 @@
 
         <a href="/create" class="nav">+ New Plant</a>
 
-        {#
-            TODO: All of the following cards are what we'd refer to as
-            "hard-coded". That is, their values do not actually come from the 
-            database! Refactor this page to use a 'for' loop to display all
-            plants with the data passed from the route function's context.
-
-            HINT: Use the plant's _id field as the id for constructing URLs.
-        #}
+        {% for plant in plants %}
+        <div class="card">
+            <a href="{{ url_for('detail', plant_id=plant['_id']) }}">
+                <img src="{{ plant['photo_url'] }}" alt="Photo of {{ plant['name'] }}">
+            </a>
+            <div class="card-content">
+                <a href="{{ url_for('detail', plant_id=plant['_id'])}}">{{ plant['name'] }}</a>
+            </div>
+        </div>
+            {% endfor %}
 
         <div id="items">
             <div class="card">
-                <a href="/plant/1"><img src="https://www.almanac.com/sites/default/files/styles/primary_image_in_article/public/image_nodes/tomatoes_helios4eos_gettyimages-edit.jpeg?itok=4KrW14a4"></a>
+                <a href="/plant/1"><img src="https://cdn.mos.cms.futurecdn.net/2Aco4s8mLGwfvD6zS4LQ5j-1600-80.jpg.webp"></a>
                 <div class="card-content">
                     <a href="/plant/1">Tomato</a>
                 </div>
             </div>
 
             <div class="card">
-                <a href="/plant/2"><img src="https://opimedia.azureedge.net/-/media/Images/MEN/Editorial/Blogs/Organic-Gardening/Growing-Corn-from-Sowing-to-Harvest/corn-jpg.jpg?h=367&w=550&la=en&hash=9675303A51AB99E3007C9C1B13CB72BDE9D9C561"></a>
+                <a href="/plant/2"><img src="https://plantura.garden/uk/wp-content/uploads/sites/2/2022/04/corn-cob.jpg"></a>
                 <div class="card-content">
                     <a href="/plant/2">Corn</a>
                 </div>
